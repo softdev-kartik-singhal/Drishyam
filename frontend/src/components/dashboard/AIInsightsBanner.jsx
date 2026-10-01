@@ -16,11 +16,11 @@ const INSIGHTS = [
   },
   {
     icon: FaClock,
-    color:  "text-blue-400",
-    bg:     "bg-blue-500/5",
-    border: "border-blue-500/10",
+    color:  "text-[#E2B4BD]",
+    bg:     "bg-[#F7D6D0]/10",
+    border: "border-[#E2B4BD]/20",
     stat:   "16:00 - 22:00",
-    statBg: "bg-blue-500/10 text-blue-300 border-blue-500/20",
+    statBg: "bg-[#E2B4BD]/15 text-[#FFF5F5] border-[#E2B4BD]/30",
     headline: "Peak Crime Window",
     detail:   "Patrol density recommendation active",
   },
@@ -84,7 +84,7 @@ const AIInsightsBanner = () => (
     {/* Footer link */}
     <Link
       to="/insights-forecast"
-      className="flex items-center justify-center gap-1.5 w-full text-[10px] font-bold text-slate-400 hover:text-blue-400 transition-colors border-t border-slate-700/50 pt-3 uppercase tracking-wider font-mono"
+      className="flex items-center justify-center gap-1.5 w-full text-[10px] font-bold text-slate-400 hover:text-[#E2B4BD] transition-colors border-t border-slate-700/50 pt-3 uppercase tracking-wider font-mono"
     >
       View All AI Insights <FaArrowRight className="text-[9px]" />
     </Link>

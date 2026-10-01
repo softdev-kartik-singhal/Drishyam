@@ -16,7 +16,7 @@ const RecentCriticalCases = ({ cases }) => {
         return "bg-amber-500/8 text-amber-400 border border-amber-500/15 font-bold tracking-wide";
       case "MEDIUM":
       default:
-        return "bg-blue-500/8 text-blue-400 border border-blue-500/15 font-semibold";
+        return "bg-[#F7D6D0]/20 text-[#E2B4BD] border border-[#E2B4BD]/30 font-semibold";
     }
   };
 
@@ -25,7 +25,7 @@ const RecentCriticalCases = ({ cases }) => {
       case "Charge-sheet Submitted":
         return "text-emerald-400 bg-emerald-500/5 border border-emerald-500/12";
       case "Suspect Apprehended":
-        return "text-blue-400 bg-blue-500/5 border border-blue-500/12";
+        return "text-[#E2B4BD] bg-[#F7D6D0]/15 border border-[#E2B4BD]/30 font-semibold";
       case "Under Investigation":
       default:
         return "text-slate-400 bg-slate-900/60 border border-slate-800/25";
@@ -39,7 +39,7 @@ const RecentCriticalCases = ({ cases }) => {
     >
       <div className="flex items-center justify-between border-b border-slate-700/50 pb-4 mb-5">
         <div className="flex items-center gap-2.5">
-          <FaClipboardList className="text-blue-400 text-base" />
+          <FaClipboardList className="text-[#E2B4BD] text-base" />
           <h2 className="text-xs font-bold text-white uppercase tracking-wider font-mono">
             Critical CCTNS Case Feed
           </h2>
@@ -70,7 +70,7 @@ const RecentCriticalCases = ({ cases }) => {
                   {/* Standard Row */}
                   <tr className="intel-row group hover:bg-slate-800/40 transition-colors duration-200 ease-in-out cursor-pointer">
                     <td className="py-5 px-6">
-                      <div className="font-bold text-slate-300 group-hover:text-blue-400 transition-colors duration-150 font-mono text-[11px] tracking-tight">
+                      <div className="font-bold text-slate-300 group-hover:text-[#E2B4BD] transition-colors duration-150 font-mono text-[11px] tracking-tight">
                         {c.CaseNo}
                       </div>
                       <div className="text-[9px] text-slate-600 mt-1 select-all font-mono">
@@ -112,11 +112,11 @@ const RecentCriticalCases = ({ cases }) => {
                   {/* Expanded Inspector Drawer */}
                   {isExpanded && (
                     <tr>
-                      <td colSpan={6} className="bg-slate-950/70 px-8 py-6 border-l-2 border-l-blue-500/50">
+                      <td colSpan={6} className="bg-slate-950/70 px-8 py-6 border-l-2 border-l-[#E2B4BD]">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-[11px] leading-relaxed text-slate-300">
                           {/* Case Briefing */}
                           <div className="md:col-span-2 space-y-2.5">
-                            <span className="text-[9px] font-bold text-blue-400/80 uppercase tracking-widest block font-space">
+                            <span className="text-[9px] font-bold text-[#E2B4BD] uppercase tracking-widest block font-space">
                               Case Briefing (BriefFacts)
                             </span>
                             <p className="text-slate-400 bg-slate-900/40 p-3.5 rounded-[3px] border border-slate-800/20 leading-relaxed">

@@ -47,10 +47,10 @@ const AIAlertsList = ({ alerts, onAlertHandled }) => {
       case "MEDIUM":
       default:
         return {
-          bg: "bg-blue-950/20",
-          border: "border-blue-900/40 border-l-blue-500",
-          text: "text-blue-400",
-          badge: "bg-blue-500/10 text-blue-400 border border-blue-500/20"
+          bg: "bg-[#F7D6D0]/15",
+          border: "border-[#4A4A4A]/40 border-l-[#E2B4BD]",
+          text: "text-[#E2B4BD]",
+          badge: "bg-[#F7D6D0]/30 text-[#4A4A4A] border border-[#E2B4BD]/40"
         };
     }
   };
@@ -59,7 +59,7 @@ const AIAlertsList = ({ alerts, onAlertHandled }) => {
     <div className="rounded-[4px] border border-slate-800/25 bg-slate-900/50 p-7 flex flex-col h-[520px]">
       <div className="flex items-center justify-between border-b border-slate-800/25 pb-4 mb-5">
         <div className="flex items-center gap-2">
-          <FaBell className="text-blue-400/80 text-base" />
+          <FaBell className="text-[#E2B4BD] text-base" />
           <h2 className="text-[11px] font-bold text-white uppercase tracking-widest font-mono">
             AI Pattern Alerts
           </h2>
@@ -136,7 +136,7 @@ const AIAlertsList = ({ alerts, onAlertHandled }) => {
                       <button
                         onClick={() => handleAction(alert.alert_id, "investigate")}
                         disabled={isProcessing}
-                        className="rounded bg-blue-600 hover:bg-blue-700 px-2 py-1 font-mono text-[10px] text-white flex items-center gap-1 transition-colors disabled:opacity-50"
+                        className="rounded bg-[#E2B4BD] hover:bg-[#d69ea9] px-2 py-1 font-mono text-[10px] text-[#4A4A4A] font-bold flex items-center gap-1 transition-colors disabled:opacity-50"
                       >
                         Investigate <FaAngleRight className="text-[8px]" />
                       </button>

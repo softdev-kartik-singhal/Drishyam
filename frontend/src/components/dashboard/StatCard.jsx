@@ -56,8 +56,8 @@ const StatCard = ({
   value,
   change,
   icon: Icon,
-  color = "text-blue-500",
-  borderColor = "border-blue-500",
+  color = "text-[#E2B4BD]",
+  borderColor = "border-[#E2B4BD]",
   lastSync,
   dataSource,
   coverage,
@@ -81,16 +81,16 @@ const StatCard = ({
     ? "Real-Time Synced"
     : lastSync;
 
-  // Extract color hex from Tailwind class for accent line
+  // Extract color hex from Tailwind class for accent line (No Blue)
   const accentHex =
-    color.includes("blue") ? "#3b82f6" :
+    color.includes("blue") || color.includes("mauve") || color.includes("E2B4BD") ? "#E2B4BD" :
       color.includes("amber") ? "#f59e0b" :
         color.includes("emerald") ? "#10b981" :
-          color.includes("rose") ? "#f43f5e" : "#3b82f6";
+          color.includes("rose") ? "#f43f5e" : "#E2B4BD";
 
   return (
     <div
-      className="relative overflow-hidden rounded-md border border-slate-700/60 bg-slate-900/85 backdrop-blur-md shadow-xl transition-all duration-200 ease-in-out hover:border-slate-600 hover:bg-slate-800/80 hover:-translate-y-0.5 flex flex-col font-sans"
+      className="relative overflow-hidden rounded-md border border-[#4A4A4A] bg-[#333333] backdrop-blur-md shadow-xl transition-all duration-200 ease-in-out hover:border-[#E2B4BD] hover:bg-[#3D3D3D] hover:-translate-y-0.5 flex flex-col font-sans"
       style={{ padding: "20px 22px" }}
       onMouseEnter={() => setShowMetadata(true)}
       onMouseLeave={() => setShowMetadata(false)}
@@ -106,7 +106,7 @@ const StatCard = ({
           >
             {title}
           </span>
-          <div className={`flex-shrink-0 rounded border border-slate-800/40 bg-slate-800/30 p-2 ${color}`}>
+          <div className={`flex-shrink-0 rounded border border-[#4A4A4A] bg-[#2B2B2B] p-2 ${color}`}>
             {Icon ? <Icon className="text-xs sm:text-sm" /> : <FaInfoCircle className="text-xs sm:text-sm" />}
           </div>
         </div>
@@ -132,18 +132,17 @@ const StatCard = ({
       </div>
 
       <div
-        className={`absolute inset-0 flex flex-col justify-between bg-slate-950/97 p-6 text-center transition-all duration-200 ease-in-out ${showMetadata
+        className={`absolute inset-0 flex flex-col justify-between bg-[#2B2B2B]/98 p-6 text-center transition-all duration-200 ease-in-out ${showMetadata
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-3 pointer-events-none"
           }`}
       >
 
-
         <div>
-          <div className="flex items-center justify-center gap-1.5 border-b border-slate-800/50 pb-2 mb-3">
-            <FaInfoCircle className="text-[10px] text-blue-400/80" />
+          <div className="flex items-center justify-center gap-1.5 border-b border-[#4A4A4A]/50 pb-2 mb-3">
+            <FaInfoCircle className="text-[10px] text-[#E2B4BD]" />
             <span
-              className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 font-mono"
+              className="text-[10px] font-semibold uppercase tracking-wider text-slate-300 font-mono"
             >
               Operational Metadata
             </span>
@@ -152,7 +151,7 @@ const StatCard = ({
           <div className="space-y-2.5">
             <div>
               <span
-                className="text-[9px] text-slate-500 block uppercase tracking-wider mb-0.5 font-semibold font-mono"
+                className="text-[9px] text-[#F7D6D0] block uppercase tracking-wider mb-0.5 font-semibold font-mono"
               >
                 SOURCE
               </span>
@@ -164,7 +163,7 @@ const StatCard = ({
             </div>
             <div>
               <span
-                className="text-[9px] text-slate-500 block uppercase tracking-wider mb-0.5 font-semibold font-mono"
+                className="text-[9px] text-[#F7D6D0] block uppercase tracking-wider mb-0.5 font-semibold font-mono"
               >
                 JURISDICTION
               </span>
@@ -178,10 +177,10 @@ const StatCard = ({
         </div>
 
         <div
-          className="flex flex-col items-center justify-center gap-0.5 border-t border-slate-800/50 pt-2"
+          className="flex flex-col items-center justify-center gap-0.5 border-t border-[#4A4A4A]/50 pt-2"
         >
           <span
-            className="text-[9px] text-slate-500 uppercase tracking-wider font-semibold font-mono"
+            className="text-[9px] text-[#F7D6D0] uppercase tracking-wider font-semibold font-mono"
           >
             LAST SYNC
           </span>

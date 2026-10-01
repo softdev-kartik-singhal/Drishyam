@@ -127,7 +127,7 @@ const QuickActionsPanel = () => {
       id: "network_analysis",
       label: "Link & Network Analysis",
       icon: FaProjectDiagram,
-      iconColor: "text-blue-400 bg-blue-500/10 border-blue-500/20",
+      iconColor: "text-[#E2B4BD] bg-[#E2B4BD]/10 border-[#E2B4BD]/20",
       path: "/network-analysis",
       btnText: "Open Matrix",
     },
@@ -135,7 +135,7 @@ const QuickActionsPanel = () => {
       id: "generate_ai_brief",
       label: "AI Insights & Forecast",
       icon: FaBrain,
-      iconColor: "text-purple-400 bg-purple-500/10 border-purple-500/20",
+      iconColor: "text-[#E2B4BD] bg-[#F7D6D0]/20 border-[#E2B4BD]/30",
       isAction: true,
       btnText: "Run AI Engine",
     },
@@ -151,7 +151,7 @@ const QuickActionsPanel = () => {
       id: "officer_lookup",
       label: "Officer Performance",
       icon: FaUserShield,
-      iconColor: "text-cyan-400 bg-cyan-500/10 border-cyan-500/20",
+      iconColor: "text-[#E2B4BD] bg-[#F7D6D0]/10 border-[#E2B4BD]/20",
       path: "/officers",
       btnText: "View Roster",
     },
@@ -176,7 +176,7 @@ const QuickActionsPanel = () => {
   const levelColor = (level) => {
     if (level === "SUCCESS") return "text-emerald-400 font-bold";
     if (level === "ERROR") return "text-rose-400 font-bold";
-    if (level === "INIT") return "text-blue-400 font-bold";
+    if (level === "INIT") return "text-[#E2B4BD] font-bold";
     return "text-slate-400";
   };
 
@@ -212,7 +212,7 @@ const QuickActionsPanel = () => {
                 <div className="flex items-center gap-3 min-w-0">
                   <div className={`p-2.5 rounded-md border flex items-center justify-center flex-shrink-0 ${act.iconColor}`}>
                     {isCurrent ? (
-                      <div className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-slate-700 border-t-cyan-400" />
+                      <div className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-slate-700 border-t-[#E2B4BD]" />
                     ) : (
                       <Icon className="text-xs" />
                     )}
@@ -221,7 +221,7 @@ const QuickActionsPanel = () => {
                     {act.label}
                   </span>
                 </div>
-                <span className="text-[10px] font-mono font-bold text-slate-400 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all duration-200 ease-in-out uppercase ml-2 whitespace-nowrap">
+                <span className="text-[10px] font-mono font-bold text-slate-400 group-hover:text-[#E2B4BD] group-hover:translate-x-0.5 transition-all duration-200 ease-in-out uppercase ml-2 whitespace-nowrap">
                   {act.btnText} &rarr;
                 </span>
               </div>

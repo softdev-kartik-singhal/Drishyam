@@ -20,7 +20,7 @@ function Navbar({ onToggleMobileMenu }) {
 
   return (
     <header 
-      className="sticky top-0 z-50 flex h-20 items-center justify-between border-b border-slate-800 bg-slate-950/98 font-inter shadow-sm shadow-black/20 px-4 sm:px-6 md:px-8"
+      className="sticky top-0 z-50 flex h-20 items-center justify-between border-b border-[#F7D6D0]/40 bg-[#262626] font-inter shadow-sm shadow-black/20 px-4 sm:px-6 md:px-8"
     >
 
       {/* Left Header Section */}
@@ -29,7 +29,7 @@ function Navbar({ onToggleMobileMenu }) {
         {/* Hamburger Menu Toggle for Mobile & Tablet (Hidden on Desktop) */}
         <button
           onClick={onToggleMobileMenu}
-          className="flex lg:hidden items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl border border-slate-700/70 bg-slate-900/90 hover:bg-slate-800/90 hover:border-blue-500/60 text-slate-200 hover:text-blue-400 transition-all duration-200 shadow-sm active:scale-95 cursor-pointer flex-shrink-0"
+          className="flex lg:hidden items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl border border-[#4A4A4A] bg-[#333333] hover:bg-[#3D3D3D] hover:border-[#E2B4BD] text-[#FFF5F5] hover:text-[#E2B4BD] transition-all duration-200 shadow-sm active:scale-95 cursor-pointer flex-shrink-0"
           title="Toggle Navigation Menu"
         >
           <HiBars3 className="text-xl sm:text-2xl" />
@@ -45,7 +45,7 @@ function Navbar({ onToggleMobileMenu }) {
             <h1 className="text-sm sm:text-lg font-bold tracking-wider text-white uppercase leading-tight mb-0.5 sm:mb-1.5 font-sans">
               Madhya Pradesh Police
             </h1>
-            <p className="text-[9px] sm:text-[11px] uppercase tracking-[0.14em] sm:tracking-[0.18em] text-blue-400 font-sans leading-normal">
+            <p className="text-[9px] sm:text-[11px] uppercase tracking-[0.14em] sm:tracking-[0.18em] text-[#E2B4BD] font-sans leading-normal font-semibold">
               AI Crime Intelligence Platform
             </p>
           </div>
@@ -58,14 +58,14 @@ function Navbar({ onToggleMobileMenu }) {
 
         {/* User Badge Info (Desktop / Tablet) */}
         {currentUser && (
-          <div className="hidden md:flex items-center gap-3 bg-slate-900/90 border border-slate-700/70 rounded-xl px-3.5 h-10 sm:h-11 font-mono text-xs shadow-sm">
-            <div className="h-7 w-7 rounded-lg flex items-center justify-center text-sm font-bold bg-blue-600 text-white flex-shrink-0">
+          <div className="hidden md:flex items-center gap-3 bg-[#333333] border border-[#4A4A4A] rounded-xl px-3.5 h-10 sm:h-11 font-mono text-xs shadow-sm">
+            <div className="h-7 w-7 rounded-lg flex items-center justify-center text-sm font-bold bg-[#E2B4BD] text-[#4A4A4A] flex-shrink-0">
               {isAdmin ? <FaUserShield /> : <FaUserCheck />}
             </div>
             <div className="text-left">
               <div className="font-bold text-white leading-none">{currentUser.name}</div>
               <div className="text-[10px] text-slate-400 mt-1 uppercase tracking-wider">
-                {currentUser.rank} • <span className="text-blue-400 font-bold">{currentUser.role}</span>
+                {currentUser.rank} • <span className="text-[#E2B4BD] font-bold">{currentUser.role}</span>
               </div>
             </div>
           </div>
@@ -76,12 +76,12 @@ function Navbar({ onToggleMobileMenu }) {
           onClick={toggleTheme}
           aria-label={isDark ? "Switch to Light Theme" : "Switch to Dark Theme"}
           title={isDark ? "Switch to Light Theme" : "Switch to Dark Theme"}
-          className="flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl border border-slate-700/70 bg-slate-900/90 hover:border-amber-400/60 hover:bg-slate-800/90 text-amber-400 hover:text-amber-300 transition-all duration-200 shadow-sm active:scale-95 cursor-pointer group"
+          className="flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl border border-[#4A4A4A] bg-[#333333] hover:border-[#E2B4BD] hover:bg-[#3D3D3D] text-[#E2B4BD] hover:text-[#F7D6D0] transition-all duration-200 shadow-sm active:scale-95 cursor-pointer group"
         >
           {isDark ? (
-            <FiSun className="text-lg sm:text-xl transition-transform duration-300 group-hover:rotate-45" />
+            <FiSun className="text-lg sm:text-xl transition-transform duration-300 group-hover:rotate-45 text-[#F7D6D0]" />
           ) : (
-            <FiMoon className="text-lg sm:text-xl text-indigo-500 hover:text-indigo-600 transition-transform duration-300 group-hover:-rotate-12" />
+            <FiMoon className="text-lg sm:text-xl text-[#E2B4BD] hover:text-[#d69ea9] transition-transform duration-300 group-hover:-rotate-12" />
           )}
         </button>
 
@@ -94,7 +94,7 @@ function Navbar({ onToggleMobileMenu }) {
         {/* Settings Icon Button */}
         <Link
           to="/settings"
-          className="flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl border border-slate-700/70 bg-slate-900/90 hover:border-blue-500/60 text-slate-200 hover:text-blue-400 hover:bg-slate-800/90 transition-all duration-200 shadow-sm active:scale-95 group"
+          className="flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl border border-[#4A4A4A] bg-[#333333] hover:border-[#E2B4BD] text-slate-200 hover:text-[#E2B4BD] hover:bg-[#3D3D3D] transition-all duration-200 shadow-sm active:scale-95 group"
           title="Settings"
         >
           <FiSettings className="text-xl sm:text-2xl group-hover:rotate-90 transition-transform duration-300" />

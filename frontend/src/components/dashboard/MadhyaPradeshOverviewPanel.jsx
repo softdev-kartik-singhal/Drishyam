@@ -57,11 +57,11 @@ const createClusterIcon = (districtName, count) => {
     pulseClass = "";
   } else if (isMedium) {
     outerSize = 34; innerSize = 24;
-    bg = "rgba(23,52,130,0.92)";
-    borderColor = "rgba(59,130,246,0.45)";
-    textColor = "#93c5fd";
-    outerBg = "rgba(59,130,246,0.1)";
-    innerShadow = "0 2px 6px rgba(59,130,246,0.2), 0 1px 4px rgba(0,0,0,0.7), inset 0 0.5px 0 rgba(255,255,255,0.05)";
+    bg = "rgba(74,74,74,0.95)";
+    borderColor = "rgba(226,180,189,0.7)";
+    textColor = "#F7D6D0";
+    outerBg = "rgba(226,180,189,0.18)";
+    innerShadow = "0 2px 6px rgba(226,180,189,0.25), 0 1px 4px rgba(0,0,0,0.7), inset 0 0.5px 0 rgba(255,255,255,0.05)";
     pulseClass = "";
   } else {
     outerSize = 28; innerSize = 20;
@@ -110,7 +110,7 @@ const createIncidentIcon = (severity) => {
   const palette = {
     CRITICAL: { dot: "#ef4444", glow: "rgba(239,68,68,0.22)", glowDark: "rgba(239,68,68,0.1)", shadow: "rgba(239,68,68,0.5)" },
     HIGH: { dot: "#f59e0b", glow: "rgba(245,158,11,0.18)", glowDark: "rgba(245,158,11,0.08)", shadow: "rgba(245,158,11,0.4)" },
-    MEDIUM: { dot: "#3b82f6", glow: "rgba(59,130,246,0.18)", glowDark: "rgba(59,130,246,0.08)", shadow: "rgba(59,130,246,0.4)" },
+    MEDIUM: { dot: "#E2B4BD", glow: "rgba(226,180,189,0.25)", glowDark: "rgba(226,180,189,0.12)", shadow: "rgba(226,180,189,0.4)" },
     LOW: { dot: "#64748b", glow: "rgba(100,116,139,0.12)", glowDark: "rgba(100,116,139,0.06)", shadow: "rgba(100,116,139,0.3)" },
   };
 
@@ -283,7 +283,7 @@ const MadhyaPradeshOverviewPanel = () => {
       // 4. State boundary glow outer
       L.geoJSON(stateData, {
         style: {
-          color: "#2563eb",
+          color: "#B87584",
           weight: 12,
           opacity: 0.5,
           fill: false,
@@ -296,7 +296,7 @@ const MadhyaPradeshOverviewPanel = () => {
       // State boundary glow mid
       L.geoJSON(stateData, {
         style: {
-          color: "#3b82f6",
+          color: "#E2B4BD",
           weight: 6,
           opacity: 0.8,
           fill: false,
@@ -306,10 +306,10 @@ const MadhyaPradeshOverviewPanel = () => {
         interactive: false
       }).addTo(map);
 
-      // 5. Thin bright neon blue boundary stroke across Madhya Pradesh state
+      // 5. Thin bright boundary stroke across Madhya Pradesh state
       L.geoJSON(stateData, {
         style: {
-          color: "#93c5fd",
+          color: "#F7D6D0",
           weight: 2.5,
           opacity: 1,
           fill: false,
@@ -398,11 +398,11 @@ const MadhyaPradeshOverviewPanel = () => {
         const isHigh = data.count > 6;
         const isMedium = data.count > 2;
         const riskLabel = isCritical ? "CRITICAL" : isHigh ? "HIGH" : isMedium ? "MEDIUM" : "LOW";
-        const riskColor = isCritical ? "#ef4444" : isHigh ? "#f59e0b" : isMedium ? "#3b82f6" : "#94a3b8";
+        const riskColor = isCritical ? "#ef4444" : isHigh ? "#f59e0b" : isMedium ? "#E2B4BD" : "#94a3b8";
 
         const tooltipHTML = `
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:6px 8px;background:rgba(2,6,23,0.96);border:1px solid rgba(51,65,85,0.8);border-radius:4px;color:#f8fafc;min-width:150px;box-shadow:0 10px 25px rgba(0,0,0,0.5);">
-            <div style="font-weight:bold;color:#38bdf8;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid rgba(51,65,85,0.6);padding-bottom:3px;margin-bottom:4px;">${district}</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:6px 8px;background:rgba(43,43,43,0.96);border:1px solid rgba(226,180,189,0.5);border-radius:4px;color:#FFF5F5;min-width:150px;box-shadow:0 10px 25px rgba(0,0,0,0.5);">
+            <div style="font-weight:bold;color:#E2B4BD;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid rgba(226,180,189,0.3);padding-bottom:3px;margin-bottom:4px;">${district}</div>
             <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
               <span style="color:#94a3b8;">Total Cases:</span>
               <span style="font-weight:bold;color:#ffffff;">${data.count} FIRs</span>
@@ -465,8 +465,8 @@ const MadhyaPradeshOverviewPanel = () => {
               onClick={() => setActiveLayer(key)}
               className={`px-3 py-1 rounded text-[10px] font-semibold transition-all duration-200 ease-in-out uppercase tracking-wider cursor-pointer ${
                 activeLayer === key
-                  ? "bg-blue-600 text-white shadow-sm shadow-blue-500/30 font-bold"
-                  : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/60"
+                  ? "bg-[#E2B4BD] text-[#4A4A4A] shadow-sm shadow-[#E2B4BD]/30 font-bold"
+                  : "text-slate-400 hover:text-slate-200 hover:bg-[#3D3D3D]"
               }`}
             >
               {layer.label}
@@ -500,7 +500,7 @@ const MadhyaPradeshOverviewPanel = () => {
         </div>
         <div className="pl-4">
           <span className="text-[9px] text-slate-400 uppercase tracking-wider block font-mono">HOTSPOTS</span>
-          <span className="text-blue-400 font-bold text-sm leading-tight tabular-nums font-mono">{hotspots.length} Districts</span>
+          <span className="text-[#E2B4BD] font-bold text-sm leading-tight tabular-nums font-mono">{hotspots.length} Districts</span>
         </div>
       </div>
 
@@ -512,7 +512,7 @@ const MadhyaPradeshOverviewPanel = () => {
         <span className="text-[9px] text-slate-400 uppercase tracking-wider font-semibold">COMMAND GIS OVERVIEW</span>
         <Link
           to="/map"
-          className="flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-all duration-200 ease-in-out uppercase tracking-wider group"
+          className="flex items-center gap-2 text-xs font-bold text-[#E2B4BD] hover:text-[#F7D6D0] transition-all duration-200 ease-in-out uppercase tracking-wider group"
         >
           Go to Crime Map <span className="group-hover:translate-x-1 transition-transform duration-200 ease-in-out">&rarr;</span>
         </Link>

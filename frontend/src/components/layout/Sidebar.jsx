@@ -110,7 +110,7 @@ function Sidebar() {
   });
 
   return (
-    <aside className="hidden lg:flex h-[calc(100vh-80px)] w-[285px] flex-col border-r border-slate-800/90 bg-[#060b18] font-inter flex-shrink-0 select-none">
+    <aside className="hidden lg:flex h-[calc(100vh-80px)] w-[285px] flex-col border-r border-[#F7D6D0]/30 bg-[#303030] font-inter flex-shrink-0 select-none">
 
       {/* Navigation - Categorized & Nested Subcategories */}
       <nav className="flex-grow px-4 py-6 space-y-7 overflow-y-auto custom-scrollbar">
@@ -118,10 +118,10 @@ function Sidebar() {
           <div key={group.category} className="space-y-2.5">
             {/* Category Header with distinct left padding */}
             <div 
-              className="flex items-center gap-3 pt-2 pb-1.5 text-[11px] font-bold tracking-wider text-cyan-400 uppercase font-mono border-b border-slate-800/70"
+              className="flex items-center gap-3 pt-2 pb-1.5 text-[11px] font-bold tracking-wider text-[#E2B4BD] uppercase font-mono border-b border-[#4A4A4A]"
               style={{ paddingLeft: "18px", paddingRight: "12px" }}
             >
-              <span className="h-2 w-2 rounded-full bg-cyan-400 flex-shrink-0" />
+              <span className="h-2 w-2 rounded-full bg-[#E2B4BD] flex-shrink-0" />
               <span className="tracking-widest">{group.category}</span>
             </div>
 
@@ -138,15 +138,15 @@ function Sidebar() {
                     className={({ isActive }) =>
                       `flex h-[44px] items-center gap-3.5 rounded-lg text-[13.5px] font-medium transition-all duration-150 group ${
                         isActive
-                          ? "bg-blue-600/25 text-white font-bold border-l-4 border-blue-500 shadow-sm shadow-blue-500/20"
-                          : "text-slate-300 hover:bg-slate-800/60 hover:text-white"
+                          ? "bg-[#E2B4BD]/20 text-[#FFF5F5] font-bold border-l-4 border-[#E2B4BD] shadow-sm shadow-[#E2B4BD]/20"
+                          : "text-slate-300 hover:bg-[#3D3D3D] hover:text-[#FFF5F5]"
                       }`
                     }
                   >
                     {({ isActive }) => (
                       <>
                         <span className="flex items-center justify-center flex-shrink-0 w-6 h-6 mr-0.5">
-                          <Icon className={`text-[20px] transition-colors ${isActive ? "text-blue-400" : "text-slate-400 group-hover:text-blue-300"}`} />
+                          <Icon className={`text-[20px] transition-colors ${isActive ? "text-[#E2B4BD]" : "text-slate-400 group-hover:text-[#F7D6D0]"}`} />
                         </span>
                         <span className="truncate tracking-wide">{item.name}</span>
                       </>
@@ -160,7 +160,7 @@ function Sidebar() {
       </nav>
 
       {/* Operational Clock Footer */}
-      <div className="border-t border-slate-800/80 px-6 py-4 font-mono text-[11px] space-y-2.5 bg-[#040711]">
+      <div className="border-t border-[#4A4A4A] px-6 py-4 font-mono text-[11px] space-y-2.5 bg-[#262626]">
         <div className="flex items-center justify-between font-semibold tracking-wider">
           <div className="flex items-center gap-2 text-emerald-400">
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -170,9 +170,9 @@ function Sidebar() {
           </div>
           <span className="text-slate-400 text-[10px]">{dateFormatted}</span>
         </div>
-        <div className="flex items-center justify-between text-[9.5px] text-slate-500 tracking-wider uppercase border-t border-slate-800/40 pt-2 font-bold">
+        <div className="flex items-center justify-between text-[9.5px] text-slate-500 tracking-wider uppercase border-t border-[#4A4A4A]/50 pt-2 font-bold">
           <span>CCTNS SDK ONLINE</span>
-          <span className="text-cyan-400">ZOHO CATALYST</span>
+          <span className="text-[#E2B4BD]">ZOHO CATALYST</span>
         </div>
       </div>
     </aside>

@@ -7,9 +7,9 @@ import {
 } from "react-icons/fa";
 import StatCard from "./StatCard";
 
-// Static sparkline trend data for each KPI card (10-point arrays)
+// Static sparkline trend data for each KPI card (10-point arrays) - Zero blue
 const SPARK_DATA = {
-  firs:       { data: [168, 172, 170, 176, 181, 179, 184, 190, 196, 200], color: "#3b82f6" },
+  firs:       { data: [168, 172, 170, 176, 181, 179, 184, 190, 196, 200], color: "#E2B4BD" },
   active:     { data: [162, 158, 165, 160, 155, 150, 154, 150, 148, 150], color: "#f59e0b" },
   chargeSheet:{ data: [68,  70,  71,  73,  72,  74,  74,  75,  76,  77],  color: "#10b981" },
   arrest:     { data: [28,  29,  30,  31,  30,  31,  32,  32,  33,  33],  color: "#f43f5e" },
@@ -24,8 +24,8 @@ const StatGrid = ({ metrics }) => {
       value:      metrics.total_firs.value.toLocaleString("en-IN"),
       change:     `${metrics.total_firs.change_percent >= 0 ? "+" : ""}${metrics.total_firs.change_percent}% from last month`,
       icon:       FaFolderOpen,
-      color:      "text-blue-400",
-      borderColor:"border-blue-500",
+      color:      "text-[#E2B4BD]",
+      borderColor:"border-[#E2B4BD]",
       dataSource: (metrics.total_firs.source_table && metrics.total_firs.source_field) 
         ? `${metrics.total_firs.source_table}.${metrics.total_firs.source_field}` 
         : "CaseMaster (Catalyst Datastore)",

@@ -10,11 +10,11 @@ import ChartCard from "./ChartCard";
 
 const CATEGORY_STYLE_MAP = {
   "CDR / IPDR": {
-    color: "#06b6d4",
+    color: "#E2B4BD",
     gradientId: "pieGradCdr",
-    light: "#38bdf8",
-    dark: "#0891b2",
-    shadow: "rgba(6, 182, 212, 0.4)"
+    light: "#F7D6D0",
+    dark: "#B87584",
+    shadow: "rgba(226, 180, 189, 0.4)"
   },
   "Bank / UPI Logs": {
     color: "#10b981",
@@ -31,11 +31,11 @@ const CATEGORY_STYLE_MAP = {
     shadow: "rgba(245, 158, 11, 0.4)"
   },
   "Chat Exports": {
-    color: "#818cf8",
+    color: "#F7D6D0",
     gradientId: "pieGradChat",
-    light: "#a5b4fc",
-    dark: "#4f46e5",
-    shadow: "rgba(129, 140, 248, 0.4)"
+    light: "#FFF5F5",
+    dark: "#E2B4BD",
+    shadow: "rgba(247, 214, 208, 0.4)"
   },
   "Android / APK Logs": {
     color: "#ec4899",
@@ -47,148 +47,129 @@ const CATEGORY_STYLE_MAP = {
 };
 
 const DEFAULT_STYLE = {
-  color: "#38bdf8",
+  color: "#E2B4BD",
   gradientId: "pieGradDefault",
-  light: "#7dd3fc",
-  dark: "#0284c7",
-  shadow: "rgba(56, 189, 248, 0.4)"
+  light: "#F7D6D0",
+  dark: "#B87584",
+  shadow: "rgba(226, 180, 189, 0.4)"
 };
 
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
     const style = CATEGORY_STYLE_MAP[data.category] || DEFAULT_STYLE;
+
     return (
-      <div className="relative z-[9999] rounded-xl border border-slate-700/80 bg-slate-950/98 p-3.5 shadow-2xl backdrop-blur-md font-mono text-xs">
-        <div className="flex items-center gap-2 mb-1.5 pb-1 border-b border-slate-800/60">
-          <span className="h-2 w-2 rounded-full" style={{ backgroundColor: style.color }} />
-          <p className="font-bold text-white uppercase tracking-wider">{data.category}</p>
+      <div className="bg-[#2B2B2B] border border-[#E2B4BD]/50 p-2.5 rounded shadow-xl text-xs font-mono">
+        <div className="flex items-center gap-2 mb-1">
+          <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: style.color }} />
+          <span className="font-bold text-white uppercase">{data.category}</span>
         </div>
-        <p className="text-slate-400">Total FIRs: <span className="text-white font-bold">{data.fir_count.toLocaleString("en-IN")}</span></p>
-        <p className="text-slate-400 mt-0.5">Share: <span className="text-emerald-400 font-bold">{data.percentage}%</span></p>
+        <div className="flex justify-between gap-4 text-slate-300">
+          <span>FIR Count:</span>
+          <span className="font-bold text-white tabular-nums">{data.fir_count.toLocaleString("en-IN")}</span>
+        </div>
+        <div className="flex justify-between gap-4 text-slate-300">
+          <span>Statewide Share:</span>
+          <span className="font-bold text-[#E2B4BD] tabular-nums">{data.percentage}%</span>
+        </div>
       </div>
     );
   }
   return null;
 };
 
-const CrimeCategoryChart = ({ data, className = "" }) => {
-  if (!data) return null;
-
-  const totalCases = data.reduce((sum, item) => sum + item.fir_count, 0);
+const CrimeCategoryChart = ({ data }) => {
+  const chartData = data || [];
+  const totalFirs = chartData.reduce((acc, curr) => acc + (curr.fir_count || 0), 0);
 
   return (
     <ChartCard
-      title="Crime Category Distribution"
-      centerTitle={true}
-      className={`h-full flex flex-col ${className}`}
+      title="Categorical Offence Breakdown"
+      subtitle="Relative distribution by forensic evidence category"
+      badge="CLASSIFICATION ENGINE"
     >
-      <div className="flex flex-col gap-6 flex-1 justify-between pt-2">
-        {/* Glassmorphic Outer Container for Donut Chart */}
-        <div className="relative h-64 w-full flex items-center justify-center my-auto">
-          {/* Subtle Outer Glowing Glass Ring */}
-          <div className="absolute w-56 h-56 rounded-full border border-slate-800/40 bg-slate-900/30 backdrop-blur-md shadow-inner pointer-events-none z-0" />
-
-          <ResponsiveContainer width="100%" height="100%" className="relative z-10">
+      <div className="flex flex-col md:flex-row items-center gap-4 h-full min-h-[300px]">
+        {/* Donut Chart Container */}
+        <div className="w-full md:w-1/2 h-[220px] relative flex items-center justify-center">
+          <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <defs>
                 {Object.entries(CATEGORY_STYLE_MAP).map(([key, style]) => (
-                  <linearGradient id={style.gradientId} key={key} x1="0%" y1="0%" x2="100%" y2="100%">
+                  <linearGradient key={key} id={style.gradientId} x1="0" y1="0" x2="1" y2="1">
                     <stop offset="0%" stopColor={style.light} stopOpacity={0.95} />
-                    <stop offset="60%" stopColor={style.color} stopOpacity={0.85} />
                     <stop offset="100%" stopColor={style.dark} stopOpacity={0.95} />
                   </linearGradient>
                 ))}
-                <linearGradient id="pieGradDefault" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#7dd3fc" stopOpacity={0.95} />
-                  <stop offset="100%" stopColor="#0284c7" stopOpacity={0.95} />
+                <linearGradient id={DEFAULT_STYLE.gradientId} x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor={DEFAULT_STYLE.light} stopOpacity={0.95} />
+                  <stop offset="100%" stopColor={DEFAULT_STYLE.dark} stopOpacity={0.95} />
                 </linearGradient>
               </defs>
-
+              <Tooltip content={<CustomTooltip />} />
               <Pie
-                data={data}
+                data={chartData}
                 dataKey="fir_count"
                 nameKey="category"
-                innerRadius={72}
-                outerRadius={96}
-                paddingAngle={5}
-                cornerRadius={6}
-                stroke="rgba(15, 23, 42, 0.6)"
+                cx="50%"
+                cy="50%"
+                innerRadius={65}
+                outerRadius={88}
+                paddingAngle={3}
+                stroke="rgba(43,43,43,0.8)"
                 strokeWidth={2}
-                isAnimationActive={true}
-                animationDuration={900}
-                animationEasing="ease-out"
               >
-                {data.map((entry) => {
+                {chartData.map((entry, index) => {
                   const style = CATEGORY_STYLE_MAP[entry.category] || DEFAULT_STYLE;
                   return (
                     <Cell
-                      key={entry.category}
+                      key={`cell-${index}`}
                       fill={`url(#${style.gradientId})`}
-                      style={{
-                        filter: `drop-shadow(0px 3px 6px ${style.shadow})`,
-                        transition: "all 0.3s ease"
-                      }}
+                      className="transition-all duration-200 hover:opacity-80"
                     />
                   );
                 })}
               </Pie>
-              <Tooltip
-                content={<CustomTooltip />}
-                wrapperStyle={{ zIndex: 9999, pointerEvents: "none" }}
-                allowEscapeViewBox={{ x: true, y: true }}
-              />
             </PieChart>
           </ResponsiveContainer>
 
-          {/* Inner Glassmorphic Floating Center Badge */}
-          <div className="absolute pointer-events-none flex flex-col items-center justify-center w-28 h-28 rounded-full bg-slate-950/80 border border-slate-800/80 backdrop-blur-md shadow-xl shadow-black/50 z-0">
-            <span className="text-[9px] font-mono tracking-widest text-slate-500 uppercase font-bold">TOTAL</span>
-            <span className="font-mono text-2xl font-extrabold text-white leading-none mt-1">
-              {totalCases.toLocaleString("en-IN")}
+          {/* Centered Donut Metric */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#F7D6D0]">
+              TOTAL
             </span>
-            <span className="text-[9px] font-mono font-bold tracking-wider text-blue-400 uppercase mt-0.5">
-              CASES
+            <span className="text-xl font-extrabold text-white tabular-nums tracking-tight font-sans">
+              {totalFirs.toLocaleString("en-IN")}
+            </span>
+            <span className="text-[9px] font-mono font-bold tracking-wider text-[#E2B4BD] uppercase mt-0.5">
+              RECORDS
             </span>
           </div>
         </div>
 
-        {/* Glassmorphic Legend Item Cards with Shaded Progress Bars */}
-        <div className="space-y-3">
-          {data.map((item) => {
+        {/* Legend / Category List */}
+        <div className="w-full md:w-1/2 flex flex-col justify-center space-y-2 font-mono text-xs">
+          {chartData.map((item) => {
             const style = CATEGORY_STYLE_MAP[item.category] || DEFAULT_STYLE;
             return (
               <div
                 key={item.category}
-                className="bg-slate-900/40 border border-slate-800/50 rounded-none p-2.5 backdrop-blur-sm hover:border-slate-700/60 transition-all shadow-sm space-y-2"
+                className="flex items-center justify-between p-2 rounded bg-[#2B2B2B] border border-[#4A4A4A] hover:border-[#E2B4BD]/50 transition-colors"
               >
-                <div className="flex items-center justify-between text-[11px] font-mono">
-                  <div className="flex items-center gap-2">
-                    <span
-                      className="h-2 w-2 rounded-full flex-shrink-0 shadow-sm"
-                      style={{ backgroundColor: style.color, boxShadow: `0 0 6px ${style.color}` }}
-                    />
-                    <span className="font-bold text-slate-200 uppercase tracking-wide text-[10px]">
-                      {item.category}
-                    </span>
-                  </div>
-                  <div className="text-slate-400 font-mono text-[10px]">
-                    <span className="text-white font-bold">{item.fir_count.toLocaleString("en-IN")} FIRs</span>
-                    <span className="text-slate-600 px-1.5">•</span>
-                    <span className="text-emerald-400 font-bold">{item.percentage}%</span>
-                  </div>
-                </div>
-
-                {/* Shaded Gradient Progress Bar */}
-                <div className="h-1.5 w-full rounded-none bg-slate-950/80 overflow-hidden border border-slate-800/40">
-                  <div
-                    className="h-full rounded-none transition-all duration-700"
-                    style={{
-                      width: `${item.percentage}%`,
-                      background: `linear-gradient(90deg, ${style.light}, ${style.color}, ${style.dark})`,
-                      boxShadow: `0 0 8px ${style.shadow}`
-                    }}
+                <div className="flex items-center gap-2 truncate">
+                  <span
+                    className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                    style={{ backgroundColor: style.color }}
                   />
+                  <span className="text-slate-200 truncate">{item.category}</span>
+                </div>
+                <div className="flex items-center gap-3 flex-shrink-0 ml-2">
+                  <span className="text-slate-400 font-bold tabular-nums">
+                    {item.fir_count.toLocaleString("en-IN")}
+                  </span>
+                  <span className="text-[#E2B4BD] font-bold w-9 text-right tabular-nums">
+                    {item.percentage}%
+                  </span>
                 </div>
               </div>
             );

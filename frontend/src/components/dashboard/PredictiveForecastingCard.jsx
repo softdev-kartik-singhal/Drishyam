@@ -319,7 +319,7 @@ const PredictiveForecastingCard = ({ lang = "en" }) => {
         <div className="flex flex-wrap gap-2.5 pt-1">
           {[
             { value: selectedDistrict, onChange: setSelectedDistrict, color: "#c084fc", options: [["ALL", isHi ? "सभी जिले" : "All Districts"], ...DISTRICTS.slice(1).map(d => [d, d])] },
-            { value: selectedCategory, onChange: setSelectedCategory, color: "#60a5fa", options: [["ALL", isHi ? "सभी श्रेणियां" : "All Categories"], ["CDR / IPDR", "CDR / IPDR"], ["Bank / UPI Logs", "Bank / UPI Logs"], ["Email Headers", "Email Headers"], ["Chat Exports", "Chat Exports"], ["Android / APK Logs", "Android / APK Logs"]] },
+            { value: selectedCategory, onChange: setSelectedCategory, color: "#E2B4BD", options: [["ALL", isHi ? "सभी श्रेणियां" : "All Categories"], ["CDR / IPDR", "CDR / IPDR"], ["Bank / UPI Logs", "Bank / UPI Logs"], ["Email Headers", "Email Headers"], ["Chat Exports", "Chat Exports"], ["Android / APK Logs", "Android / APK Logs"]] },
           ].map((sel, i) => (
             <div key={i} className="flex items-center gap-2 px-3.5 py-2 rounded-sm" style={{ background: "rgba(10,18,30,0.85)", border: "1px solid rgba(71,85,105,0.6)" }}>
               {i === 0 && <FaFilter className="text-[10px] text-purple-400" />}
@@ -365,7 +365,7 @@ const PredictiveForecastingCard = ({ lang = "en" }) => {
             style={{ background: "rgba(10,18,30,0.85)" }}
           >
             <div className="flex items-center gap-2.5 mb-5 pb-3.5 border-b border-slate-700/60 pl-1">
-              <FaPercent className="text-blue-400" />
+              <FaPercent className="text-[#E2B4BD]" />
               <h3 className="text-sm font-bold text-white uppercase tracking-widest font-mono">
                 {isHi ? "घटना संभाव्यता सूचकांक (Incident Probability Index)" : "Incident Probability Index"}
               </h3>

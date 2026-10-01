@@ -35,10 +35,10 @@ const severityConfig = {
   MEDIUM: {
     label: "Medium",
     icon: FaExclamationTriangle,
-    pill: "bg-blue-500/10 text-blue-300 border-blue-500/20",
-    dot: "bg-blue-500",
-    accent: "border-l-blue-500",
-    iconColor: "text-blue-400",
+    pill: "bg-[#F7D6D0]/30 text-[#4A4A4A] border-[#E2B4BD]/40",
+    dot: "bg-[#E2B4BD]",
+    accent: "border-l-[#E2B4BD]",
+    iconColor: "text-[#E2B4BD]",
   },
   LOW: {
     label: "Low",
@@ -130,8 +130,8 @@ const NotificationDropdown = () => {
         onClick={() => setIsOpen((p) => !p)}
         className={`relative flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl border transition-all duration-200 cursor-pointer active:scale-95 shadow-sm ${
           isOpen
-            ? "bg-blue-600/20 border-blue-500 text-blue-400 shadow-blue-500/20 shadow-md ring-2 ring-blue-500/20"
-            : "bg-slate-900/90 border-slate-700/70 hover:border-blue-500/60 text-slate-200 hover:text-blue-400 hover:bg-slate-800/90 hover:shadow-blue-500/10"
+            ? "bg-[#E2B4BD]/20 border-[#E2B4BD] text-[#E2B4BD] shadow-[#E2B4BD]/20 shadow-md ring-2 ring-[#E2B4BD]/20"
+            : "bg-slate-900/90 border-slate-700/70 hover:border-[#E2B4BD] text-slate-200 hover:text-[#E2B4BD] hover:bg-slate-800/90 hover:shadow-[#E2B4BD]/10"
         }`}
         title="FIR Alerts & Notifications"
       >
@@ -195,7 +195,7 @@ const NotificationDropdown = () => {
                 {hasUnread && (
                   <button
                     onClick={markAllAsRead}
-                    className="flex items-center gap-1.5 text-[11px] font-semibold font-mono text-blue-400 hover:text-blue-300 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 px-2.5 py-1 rounded-md transition-all"
+                    className="flex items-center gap-1.5 text-[11px] font-semibold font-mono text-[#4A4A4A] hover:text-[#4A4A4A] bg-[#F7D6D0] hover:bg-[#E2B4BD] border border-[#E2B4BD]/40 px-2.5 py-1 rounded-md transition-all"
                   >
                     <IoCheckmarkDoneOutline className="text-sm" />
                     Mark all read
@@ -314,7 +314,7 @@ const NotificationDropdown = () => {
                           </div>
 
                           {/* Title */}
-                          <p className="text-[12.5px] font-semibold text-white leading-snug line-clamp-1 group-hover:text-blue-300 transition-colors">
+                          <p className="text-[12.5px] font-semibold text-white leading-snug line-clamp-1 group-hover:text-[#E2B4BD] transition-colors">
                             {n.title}
                           </p>
 
@@ -336,7 +336,7 @@ const NotificationDropdown = () => {
                             <span className="text-[10px] font-mono text-slate-500">
                               FIR #{n.crimeNo}
                             </span>
-                            <span className="flex items-center gap-1 text-[10px] font-mono text-blue-400 group-hover:text-blue-300">
+                            <span className="flex items-center gap-1 text-[10px] font-mono text-[#E2B4BD] group-hover:text-[#F7D6D0]">
                               <FaEye className="text-[9px]" />
                               View Dossier
                             </span>
